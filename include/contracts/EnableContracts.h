@@ -42,6 +42,17 @@
 #error "'Assert' is already defined - cannot use EnableHeaders.h"
 #endif
 
+#ifndef AssertWithMessage
+#define AssertWithMessage(cond, message)                                                           \
+    if (!(cond))                                                                                   \
+        throw std::runtime_error{"Contract violation: assertion failed\n  Expression : " TOSTRING( \
+                                     cond) "\n  Location   : " __FILE__                            \
+                                           ":" TOSTRING(__LINE__) "\n  Message    : " +            \
+                                 (message)};
+#else
+#error "'AssertWithMessage' is already defined - cannot use EnableHeaders.h"
+#endif
+
 #ifndef InvalidCase
 #define InvalidCase(value)                                                                         \
     throw std::runtime_error{"Invalid value (" +                                                   \

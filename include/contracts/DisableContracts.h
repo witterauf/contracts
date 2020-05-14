@@ -5,6 +5,7 @@
 #undef Expects
 #undef Ensures
 #undef Assert
+#undef AssertWithMessage
 #undef InvalidCase
 #undef __CONTRACTS_ENABLED__
 #endif
